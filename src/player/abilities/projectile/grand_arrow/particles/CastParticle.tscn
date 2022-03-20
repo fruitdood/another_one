@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/particles/PNG (Transparent)/magic_05.png" type="Texture" id=1]
 [ext_resource path="res://assets/particles/PNG (Transparent)/spark_02.png" type="Texture" id=2]
@@ -24,7 +24,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 curve = SubResource( 16 )
 
 [sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0, 0, 0, 1, 0.414764, 0.410156, 1, 1 )
+colors = PoolColorArray( 0.414764, 0.410156, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
@@ -48,6 +48,7 @@ angle_random = 1.0
 angle_curve = SubResource( 2 )
 scale = 0.0
 scale_curve = SubResource( 6 )
+color = Color( 1, 1, 1, 0 )
 color_ramp = SubResource( 4 )
 
 [sub_resource type="QuadMesh" id=8]
@@ -93,7 +94,7 @@ color_ramp = SubResource( 15 )
 [sub_resource type="QuadMesh" id=13]
 
 [sub_resource type="Animation" id=17]
-resource_name = "CHARGE"
+resource_name = "CAST"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Ball:process_material:scale")
@@ -118,7 +119,7 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_delete_particle"
+"method": "cast_particle_ends"
 } ]
 }
 tracks/2/type = "value"
@@ -128,10 +129,133 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ball:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ball:process_material:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles:process_material:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Particles:process_material:radial_accel")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "CAST_FADEOUT"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ball:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ball:process_material:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ball:process_material:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.2, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Particles:process_material:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles:process_material:radial_accel")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, -5.0 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -160,13 +284,86 @@ tracks/1/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ball:process_material:color_ramp")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ball:process_material:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ball:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles:fract_delta")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Particles:process_material:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Particles:process_material:radial_accel")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
 
-[node name="Spatial" type="Spatial"]
+[node name="CastParticles" type="Spatial"]
 script = ExtResource( 3 )
-cooldown_reduction = 1.0
+anim_player = NodePath("AnimationPlayer")
 
 [node name="Ball" type="Particles" parent="."]
 material_override = SubResource( 1 )
+emitting = false
 amount = 20
 lifetime = 0.25
 process_material = SubResource( 7 )
@@ -181,5 +378,6 @@ process_material = SubResource( 12 )
 draw_pass_1 = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/CHARGE = SubResource( 17 )
+anims/CAST = SubResource( 17 )
+anims/CAST_FADEOUT = SubResource( 19 )
 anims/RESET = SubResource( 18 )

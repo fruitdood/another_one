@@ -1,25 +1,18 @@
 extends Spatial
 
 
-export var cooldown_reduction = 0.0
+signal change_state
 
-var time := 0.0
+export(NodePath) onready var anim_player = get_node(anim_player) as AnimationPlayer
+
+onready var anim_time = $AnimationPlayer.current_animation_length
 
 
-func _ready() -> void:
-	$AnimationPlayer.play("CHARGE")
-	$AnimationPlayer.playback_speed += cooldown_reduction
-	print($AnimationPlayer.playback_speed)
+#func _ready() -> void:
+#	anim_player.playback_speed += cooldown_reduction
+
 	
 	
-func _process(delta: float) -> void:
-	time += delta
+func cast_particle_ends() -> void:
+	emit_signal("change_state")
 	
-	
-func get_time() -> float:
-	return time
-	
-	
-func _delete_particle() -> void:
-	print(get_time())
-	queue_free()

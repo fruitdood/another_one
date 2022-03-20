@@ -1,26 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/utility/statemachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://src/player/abilities/projectile/grand_arrow/states/Firing.gd" type="Script" id=2]
 [ext_resource path="res://src/player/abilities/projectile/grand_arrow/states/Idle.gd" type="Script" id=3]
 [ext_resource path="res://src/player/abilities/projectile/grand_arrow/GrandArrowAbility.gd" type="Script" id=4]
 [ext_resource path="res://src/player/abilities/projectile/grand_arrow/states/Casting.gd" type="Script" id=5]
-[ext_resource path="res://src/player/abilities/projectile/grand_arrow/GrandArrowProjectile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/player/abilities/projectile/grand_arrow/particles/BurstParticle.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/player/abilities/projectile/grand_arrow/particles/CastParticle.tscn" type="PackedScene" id=8]
 
 [node name="GrandArrowAbility" type="Position3D"]
 script = ExtResource( 4 )
-cooldown_time = 4.0
-GrandArrowProjectile = ExtResource( 6 )
-GrandArrowCastParticles = ExtResource( 8 )
-GrandArrowBurstParticles = ExtResource( 7 )
-
-[node name="CastTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="CooldownTimer" type="Timer" parent="."]
-one_shot = true
+cast_particles = NodePath("CastParticles")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -35,12 +24,4 @@ script = ExtResource( 5 )
 [node name="Firing" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_top = 46.0
-margin_right = 743.0
-margin_bottom = 152.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="timeout" from="CastTimer" to="StateMachine/Casting" method="_on_CastTimer_timeout"]
+[node name="CastParticles" parent="." instance=ExtResource( 8 )]
