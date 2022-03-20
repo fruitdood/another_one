@@ -28,6 +28,7 @@ func _ready() -> void:
 		
 	$Rig/GrantArrowAbility.connect("casting", self, "_on_casting")
 	$Rig/GrantArrowAbility.connect("casting_finished", self, "_on_casting_finished")
+
 	
 	
 func _on_casting():

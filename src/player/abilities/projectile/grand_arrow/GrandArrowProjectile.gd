@@ -8,10 +8,10 @@ func _physics_process(delta: float) -> void:
 	look_at(transform.origin + velocity.normalized(), Vector3.UP)
 	transform.origin += velocity * delta
 
-
-func _on_GrantArrow_area_entered(area: Area) -> void:
+	
+func _on_GrandArrow_area_entered() -> void:
 	_die()
 
 
-func _on_GrantArrow_body_entered(body: Node) -> void:
+func _on_GrandArrow_body_entered(body: Node) -> void:
 	_die()

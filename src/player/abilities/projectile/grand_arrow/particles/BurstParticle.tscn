@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/particles/PNG (Transparent)/scorch_02.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.496047, 1 )
+colors = PoolColorArray( 0, 0.093626, 0.250977, 1, 0.378906, 0.459283, 1, 1, 0.699448, 0.787198, 0.973145, 0.435294 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 5
+emission_ring_radius = 0.1
+emission_ring_inner_radius = 0.08
+emission_ring_height = 0.0
+emission_ring_axis = Vector3( 1, 0, 0 )
+spread = 1.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+radial_accel = 13.87
+angle = 720.0
+angle_random = 1.0
+scale = 0.3
+color_ramp = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=5]
+
+[node name="BurstParticle" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 1 )
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )

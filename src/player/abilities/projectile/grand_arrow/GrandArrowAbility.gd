@@ -1,4 +1,4 @@
-class_name GrantArrowAbility
+class_name GrandArrowAbility
 extends Position3D
 
 signal casting
@@ -7,8 +7,9 @@ signal casting_finished
 export var casting_time := 3.0
 export var cooldown_time := 5.0
 
-export(PackedScene) var GrantArrow
-export(PackedScene) var GrantArrowParticles
+export(PackedScene) var GrandArrowProjectile
+export(PackedScene) var GrandArrowCastParticles
+export(PackedScene) var GrandArrowBurstParticles
 
 var can_cast := true
 var is_casting := false

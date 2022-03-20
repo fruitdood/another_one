@@ -10,14 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Position3D",
-"class": "GrantArrowAbility",
+"class": "GrandArrowAbility",
 "language": "GDScript",
-"path": "res://src/player/abilities/projectile/grant_arrow/GrantArrowAbility.gd"
+"path": "res://src/player/abilities/projectile/grand_arrow/GrandArrowAbility.gd"
 }, {
 "base": "State",
-"class": "GrantArrowAbilityState",
+"class": "GrandArrowAbilityState",
 "language": "GDScript",
-"path": "res://src/player/abilities/projectile/grant_arrow/GrantArrowAbilityState.gd"
+"path": "res://src/player/abilities/projectile/grand_arrow/GrandArrowAbilityState.gd"
 }, {
 "base": "Area",
 "class": "ProjectileBase",
@@ -35,8 +35,8 @@ _global_script_classes=[ {
 "path": "res://src/utility/statemachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"GrantArrowAbility": "",
-"GrantArrowAbilityState": "",
+"GrandArrowAbility": "",
+"GrandArrowAbilityState": "",
 "ProjectileBase": "",
 "State": "res://assets/icons/state.svg",
 "StateMachine": "res://assets/icons/state_machine.svg"
