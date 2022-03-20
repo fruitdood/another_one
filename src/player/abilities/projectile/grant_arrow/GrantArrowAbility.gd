@@ -24,10 +24,6 @@ func _ready() -> void:
 	cast_timer.connect("timeout", self, "_on_CastTimer_timeout")
 	cooldown_timer.connect("timeout", self, "_on_CooldownTimer_timeout")
 	
-
-func _process(delta: float) -> void:
-	$Label.text = str(self.global_transform.origin)
-	
 	
 func _on_CastTimer_timeout() -> void:
 	is_casting = false

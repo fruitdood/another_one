@@ -27,7 +27,7 @@ func enter(_msg := {}) -> void:
 	
 	var grant_arrow_particle_instance = grant_arrow.GrantArrowParticles.instance()
 	owner.add_child(grant_arrow_particle_instance)
-	grant_arrow_particle_instance.translation = owner.translation
+	grant_arrow_particle_instance.transform = owner.global_transform
 	
 	
 func exit() -> void:
