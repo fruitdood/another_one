@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/level components/rooms/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/hdr/forzen_lake_hdr.exr" type="Texture" id=3]
 [ext_resource path="res://src/main/Main.lmbake" type="BakedLightmapData" id=4]
 [ext_resource path="res://src/main/Main.gd" type="Script" id=7]
 
@@ -10,7 +11,13 @@ vertices = PoolVector3Array( -26.4, 0.335455, -35.1, -35.1, 0.335455, -35.1, -35
 polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 17, 16, 18 ), PoolIntArray( 18, 16, 19 ), PoolIntArray( 21, 20, 22 ), PoolIntArray( 22, 20, 23 ), PoolIntArray( 26, 25, 24 ), PoolIntArray( 32, 31, 27 ), PoolIntArray( 27, 31, 30 ), PoolIntArray( 27, 30, 29 ), PoolIntArray( 27, 29, 28 ), PoolIntArray( 34, 33, 35 ), PoolIntArray( 35, 33, 36 ), PoolIntArray( 38, 37, 39 ), PoolIntArray( 39, 37, 40 ), PoolIntArray( 42, 41, 43 ), PoolIntArray( 43, 41, 44 ), PoolIntArray( 46, 45, 47 ), PoolIntArray( 47, 45, 48 ), PoolIntArray( 50, 49, 51 ), PoolIntArray( 51, 49, 52 ), PoolIntArray( 54, 53, 55 ), PoolIntArray( 55, 53, 56 ), PoolIntArray( 59, 58, 57 ), PoolIntArray( 61, 60, 62 ), PoolIntArray( 62, 60, 63 ) ]
 agent/radius = 1.56
 
+[sub_resource type="PanoramaSky" id=3]
+panorama = ExtResource( 3 )
+
 [sub_resource type="Environment" id=2]
+background_mode = 3
+background_sky = SubResource( 3 )
+background_color = Color( 0.196078, 0.537255, 0.701961, 1 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 7 )
